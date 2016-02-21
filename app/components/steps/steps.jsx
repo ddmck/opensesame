@@ -10,10 +10,9 @@ const data = [
 
 export default React.createClass({
   mixins: [ReactFireMixin],
-
+  
   componentWillMount: function() {
     var ref = new Firebase("https://opensesame.firebaseio.com/Items");
-    console.log(ref)
     this.bindAsArray(ref, "items");
   },
 
@@ -24,7 +23,6 @@ export default React.createClass({
   },
 
   render: function () {
-    console.log(this.state.items);
     return (
       <div className="row">
         {this.renderCards()}
