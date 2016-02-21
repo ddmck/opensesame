@@ -1,22 +1,4 @@
 import React from 'react'
-import GridList from 'material-ui/lib/grid-list/grid-list';
-import GridTile from 'material-ui/lib/grid-list/grid-tile';
-import StarBorder from 'material-ui/lib/svg-icons/toggle/star-border';
-import IconButton from 'material-ui/lib/icon-button';
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    height: 400,
-    overflowY: 'auto',
-    marginBottom: 24,
-  },
-};
 
 const tilesData = [
   {
@@ -34,52 +16,56 @@ const tilesData = [
     title: 'Camera',
     author: 'Danson67',
   },
-  {
-    img: 'http://www.fillmurray.com/400/300',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'http://www.fillmurray.com/300/400',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'http://www.fillmurray.com/350/300',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'http://www.fillmurray.com/300/350',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    img: 'http://www.fillmurray.com/370/300',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
+  // {
+  //   img: 'http://www.fillmurray.com/400/300',
+  //   title: 'Morning',
+  //   author: 'fancycrave1',
+  // },
+  // {
+  //   img: 'http://www.fillmurray.com/300/400',
+  //   title: 'Hats',
+  //   author: 'Hans',
+  // },
+  // {
+  //   img: 'http://www.fillmurray.com/350/300',
+  //   title: 'Honey',
+  //   author: 'fancycravel',
+  // },
+  // {
+  //   img: 'http://www.fillmurray.com/300/350',
+  //   title: 'Vegetables',
+  //   author: 'jill111',
+  // },
+  // {
+  //   img: 'http://www.fillmurray.com/370/300',
+  //   title: 'Water plant',
+  //   author: 'BkrmadtyaKarki',
+  // },
 ];
 
+export default React.createClass({
+  renderCards: function () {
+    return tilesData.map((tile) => {
+      return (
+        <div className="col-sm-6 col-md-4" key={tile.img}>
+          <div className="thumbnail">
+            <img src={tile.img} alt="..."/>
+            <div className="caption">
+              <h3>{tile.title}</h3>
+              <p>{tile.author}</p>
+              <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div>
+        </div>
+      )
+    })
+  },
 
-const GridListExampleSimple = () => (
-  <div style={styles.root}>
-    <GridList
-      cellHeight={200}
-      style={styles.gridList}
-    >
-      {tilesData.map(tile => (
-        <GridTile
-          key={tile.img}
-          title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
-        >
-          <img src={tile.img} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
-
-export default GridListExampleSimple;
+  render: function () {
+    return (
+      <div className="row">
+        {this.renderCards()}
+      </div>
+    );
+  }
+});

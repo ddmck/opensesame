@@ -18,14 +18,11 @@ export default React.createClass({
       <div>
         <TopBar />
         <div className="container">
+          <Featured />
           <div className="row">
-            <div className="col-md-6">
-              <Featured />
-            </div>
-            <div className="col-md-6">
+            <div className="col-xs-12">
               <Steps />
             </div>
-
           </div>
         </div>
       </div>

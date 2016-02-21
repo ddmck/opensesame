@@ -3,11 +3,14 @@ import React from 'react';
 export default React.createClass({
   render: function () {
     return (
-      <div className="card card-block">
-        <h4 className="card-title">{this.props.title}</h4>
-        <p className="card-text">{this.props.description}</p>
-        <a href="#" className="card-link">Card link</a>
-        <a href="#" className="card-link">Another link</a>
+      <div className="col-sm-6 col-md-4">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <p>{this.props.title}</p>
+            <p>{this.props.description}</p>
+            <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
       </div>
     )
   }

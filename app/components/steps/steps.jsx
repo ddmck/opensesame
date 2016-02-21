@@ -16,7 +16,7 @@ export default React.createClass({
   render: function () {
     console.log(data);
     return (
-      <div>
+      <div className="row">
         {this.renderCards()}
       </div>
     )
