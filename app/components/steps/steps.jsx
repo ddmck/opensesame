@@ -18,7 +18,7 @@ export default React.createClass({
 
   renderCards: function () {
     return this.state.lists.map((details, index) => {
-      return <Card title={details.title} description={details.description} key={index}/>
+      return <Card title={details.title} description={details.description} key={index}  uid={details[".key"]} userUID={this.props.userUID} />
     })
   },
 
