@@ -1,10 +1,15 @@
 import React from 'react'
 import Firebase from 'firebase'
+import SignUp from './signUp.jsx'
+import SignIn from './signIn.jsx'
 var ref = new Firebase("https://opensesame.firebaseio.com");
 
 export default React.createClass({
   getInitialState: function () {
-    return {loggedIn: false}
+    return {
+      loggedIn: false,
+      method: "up"
+    }
   },
 
   componentDidMount: function () {
@@ -13,10 +18,10 @@ export default React.createClass({
     }
   },
 
-  signIn: function () {
+  signIn: function (email, password) {
     ref.authWithPassword({
-      email    : "ddmckendrick@gmail.com",
-      password : "password"
+      email,
+      password
     }, (error, authData) => {
       if (error) {
         console.log("Login Failed!", error);
@@ -27,20 +32,22 @@ export default React.createClass({
     });
   },
 
-  signUp: function () {
+  signUp: function (email, password, name) {
+    console.log("hi");
     ref.createUser({
-      email    : "ddmckendrick@gmail.com",
-      password : "password",
-      name: "Donald McKendrick"
-    }, function(error, userData) {
+      email,
+      password,
+      name
+    }, (error, userData) => {
       if (error) {
         console.log("Error creating user:", error);
       } else {
         console.log("Successfully created user account with uid:", userData.uid, userData);
         ref.child("users").child(userData.uid).set({
           provider: "email",
-          name: "Donald McKendrick"
+          name
         });
+        this.signIn(email, password)
       }
     });
   },
@@ -77,6 +84,23 @@ export default React.createClass({
     return (ref.getAuth() !== null)
   },
 
+  switch: function (method) {
+    return () => {
+      this.setState({method})
+    }
+
+  },
+
+  inOrUp: function () {
+    if (this.state.method === "up") {
+      return (
+        <SignUp action={this.signUp}/>
+      )
+    } else {
+      return <SignIn action={this.signIn}/>
+    }
+  },
+
   stateSpecificComponents: function () {
     if (this.state.loggedIn) {
       return (
@@ -88,8 +112,12 @@ export default React.createClass({
     } else {
       return (
         <div>
-          <a className="btn" onClick={this.signUp}>Sign Up</a>
-          <a className="btn" onClick={this.signIn}>Sign In</a>
+          <ul className="nav nav-tabs">
+            <li role="presentation" className={ (this.state.method === "up") ? "active" : null}><a onClick={this.switch("up")}>Sign Up</a></li>
+            <li role="presentation" className={ (this.state.method === "in") ? "active" : null}><a onClick={this.switch("in")}>Sign In</a></li>
+          </ul>
+          {this.inOrUp()}
+
         </div>
       )
     }

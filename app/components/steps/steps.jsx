@@ -10,15 +10,15 @@ const data = [
 
 export default React.createClass({
   mixins: [ReactFireMixin],
-  
+
   componentWillMount: function() {
     var ref = new Firebase("https://opensesame.firebaseio.com/Items");
     this.bindAsArray(ref, "items");
   },
 
   renderCards: function () {
-    return this.state.items.map((details) => {
-      return <Card title={details.title} description={details.description}/>
+    return this.state.items.map((details, index) => {
+      return <Card title={details.title} description={details.description} key={index}/>
     })
   },
 
