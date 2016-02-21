@@ -39,10 +39,22 @@ export default React.createClass({
     }
   },
 
-  stateSpecificComponent: function () {
+  stateSpecificComponent: function (component) {
     if (this.state.loggedIn) {
-      return (<NewList userUID={this.getUserUID()}/>)
+      return component()
     }
+  },
+
+  renderNewList: function () {
+    return (
+      <NewList userUID={this.getUserUID()}/>
+    )
+  },
+
+  renderSteps: function () {
+    return (
+      <Steps userUID={this.getUserUID()}/>
+    )
   },
 
   render: function() {
@@ -54,13 +66,21 @@ export default React.createClass({
           <Auth/>
         </div>
         <div className="container">
-          {this.stateSpecificComponent() }
+
         </div>
         <div className="container">
-          <Featured />
           <div className="row">
-            <div className="col-xs-12">
-              <Steps />
+            <div className="col-xs-6">
+              <div className="row">
+                <div className="col-xs-12">
+                  {this.stateSpecificComponent(this.renderNewList)}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-xs-12">
+                  {this.stateSpecificComponent(this.renderSteps)}
+                </div>
+              </div>
             </div>
           </div>
         </div>

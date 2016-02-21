@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
   render: function () {
     return (
-      <div className="col-sm-6 col-md-4">
+      <div className="col-sm-12">
         <div className="panel panel-default">
           <div className="panel-body">
             <p>{this.props.title}</p>

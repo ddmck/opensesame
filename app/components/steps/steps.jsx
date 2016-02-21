@@ -12,12 +12,12 @@ export default React.createClass({
   mixins: [ReactFireMixin],
 
   componentWillMount: function() {
-    var ref = new Firebase("https://opensesame.firebaseio.com/Items");
-    this.bindAsArray(ref, "items");
+    var ref = new Firebase("https://opensesame.firebaseio.com/lists").orderByChild("userUID").startAt(this.props.userUID).endAt(this.props.userUID);
+    this.bindAsArray(ref, "lists");
   },
 
   renderCards: function () {
-    return this.state.items.map((details, index) => {
+    return this.state.lists.map((details, index) => {
       return <Card title={details.title} description={details.description} key={index}/>
     })
   },
