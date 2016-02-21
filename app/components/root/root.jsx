@@ -32,9 +32,16 @@ export default React.createClass({
     return (ref.getAuth() !== null)
   },
 
+  getUserUID: function () {
+    var userDetails = ref.getAuth()
+    if (userDetails) {
+      return userDetails.uid
+    }
+  },
+
   stateSpecificComponent: function () {
     if (this.state.loggedIn) {
-      return (<NewList userUID="07f24835-378d-4d4b-9664-08f2afbc0602"/>)
+      return (<NewList userUID={this.getUserUID()}/>)
     }
   },
 
