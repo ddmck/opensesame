@@ -117,7 +117,6 @@ export default React.createClass({
             <li role="presentation" className={ (this.state.method === "in") ? "active" : null}><a onClick={this.switch("in")}>Sign In</a></li>
           </ul>
           {this.inOrUp()}
-
         </div>
       )
     }

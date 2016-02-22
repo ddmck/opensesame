@@ -65,25 +65,6 @@ export default React.createClass({
         <div className="container">
           {this.props.children}
         </div>
-        <div className="container">
-
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-6">
-              <div className="row">
-                <div className="col-xs-12">
-                  {this.stateSpecificComponent(this.renderNewList)}
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12">
-                  {this.stateSpecificComponent(this.renderSteps)}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
     )
