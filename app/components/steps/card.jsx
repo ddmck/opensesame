@@ -28,10 +28,8 @@ export default React.createClass({
   },
 
   renderSteps: function () {
-    console.log("List: ", this.state.list)
     if (this.state.list) {
       if (this.state.list.steps) {
-        console.log(Object.keys(this.state.list.steps))
         return Object.keys(this.state.list.steps).map((step) => {
           return <li>{this.state.list.steps[step].title}</li>
         })

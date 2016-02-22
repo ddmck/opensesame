@@ -63,7 +63,7 @@ export default React.createClass({
       <div>
         <TopBar />
         <div className="container">
-          <Auth/>
+          {this.props.children}
         </div>
         <div className="container">
 
