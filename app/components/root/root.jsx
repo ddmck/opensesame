@@ -62,9 +62,7 @@ export default React.createClass({
     return (
       <div>
         <TopBar />
-        <div className="container">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
 
     )

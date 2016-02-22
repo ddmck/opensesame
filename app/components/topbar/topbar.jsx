@@ -11,7 +11,7 @@ const AppBarExampleIcon = () => (
         <li><Link to="/lists/new">Create a List</Link></li>
       </ul>
       <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/auth">Log In</Link></li>
+        <li><Link to="/auth">Account</Link></li>
       </ul>
 
     </div>

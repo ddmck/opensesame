@@ -33,7 +33,7 @@ render((
       <Route path="/auth" component={Auth}/>
       <Route path="/lists">
         <IndexRoute component={Lists} />
-        <Route path="new" component={List} />
+        <Route path="new" component={NewList} />
         <Route path=":listUID" component={List} />
       </Route>
       <Route path="/*" component={NoMatch}/>

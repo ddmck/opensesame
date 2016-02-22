@@ -124,9 +124,11 @@ export default React.createClass({
 
   render: function () {
     return (
-      <div className="row">
-        {this.stateSpecificComponents()}
-        <a className="btn" onClick={this.loggedIn}>logged IN</a>
+      <div className="container">
+        <div className="row">
+          {this.stateSpecificComponents()}
+          <a className="btn" onClick={this.loggedIn}>logged IN</a>
+        </div>
       </div>
     )
   }

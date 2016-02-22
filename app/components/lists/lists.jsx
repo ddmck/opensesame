@@ -24,8 +24,10 @@ export default React.createClass({
 
   render: function () {
     return (
-      <div className="row">
-        {this.renderCards()}
+      <div className="container">
+        <div className="row">
+          {this.renderCards()}
+        </div>
       </div>
     )
   }
