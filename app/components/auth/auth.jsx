@@ -111,11 +111,12 @@ export default React.createClass({
       )
     } else {
       return (
-        <div>
+        <div className="col-sm-12 col-md-6">
           <ul className="nav nav-tabs">
             <li role="presentation" className={ (this.state.method === "up") ? "active" : null}><a onClick={this.switch("up")}>Sign Up</a></li>
             <li role="presentation" className={ (this.state.method === "in") ? "active" : null}><a onClick={this.switch("in")}>Sign In</a></li>
           </ul>
+          <br/>
           {this.inOrUp()}
         </div>
       )
@@ -127,7 +128,6 @@ export default React.createClass({
       <div className="container">
         <div className="row">
           {this.stateSpecificComponents()}
-          <a className="btn" onClick={this.loggedIn}>logged IN</a>
         </div>
       </div>
     )
